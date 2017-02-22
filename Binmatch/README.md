@@ -88,7 +88,7 @@ Current Number Field:
 Displays the current number the player is trying to make. 
 
 Highlighted grid: 
-![Grid]()
+![Grid](https://github.com/rsgc-elder-a/ics4u-isp-Binmatch/blob/master/Binmatch/Highlighted%20Grid.jpg?raw=true)
 Here is a example of how the user would interact with the game they would highlight a row or column making a number that appears. This will cause the grid to randomly generate more numbers where the number was just made. Here we use the example 8 as its one of the answers. 
 
 

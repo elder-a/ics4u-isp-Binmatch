@@ -73,19 +73,26 @@ I think it will be tough getting to use spritekit but as well jumping into somet
 Title Screen: 
 ![Title](https://github.com/rsgc-elder-a/ics4u-isp-Binmatch/blob/master/Binmatch/Title%20Screen.jpg?raw=true)
 
-This screen is very simple. It consists of the title, play button and highscore. The play button simply starts the game and sends you to the game screen
+This screen is very simple. It consists of the title, play button and high score. The play button simply starts the game and sends you to the game screen
 
 Game Screen:
 ![Game](https://github.com/rsgc-elder-a/ics4u-isp-Binmatch/blob/master/Binmatch/Game%20Screen.jpg?raw=true)
+
 Here is the game loop.
 Grid: 
-This is where the gameplay happens. The player tries to produce one of the three numbers in the Number Field by choosing bits in a row or column and scores points depending on how large the number is. The numbers are read from right to left; right being the least significant bit. When choseing numbers in columns its read down-up being the farthest down bit is the least significant bit. 
+This is where the gameplay happens. The player tries to produce one of the three numbers in the Number Field by choosing bits in a row or column and scores points depending on how large the number is. The numbers are read from right to left; right being the least significant bit. When choosing numbers in columns its read down-up being the farthest down bit is the least significant bit. 
 Numbers Field:
-This is where numbers and turns left table is. The numbers column is where the numbers the players tries to make using the grid above reside. The turns left corresponds to the number beside it. These are how many turns left the player has to produce the number beside or it will result in a return to the game screen and a game over. 
+This is where numbers and turns left values are. The numbers column is where the numbers the players tries to make using the grid above reside. The turns left column corresponds to the number beside it. These are how many turns left the player has to produce the number beside or it will result in a return to the title screen and a game over. 
 Highscore Field: 
-Displays the highscore
+Displays the high score
 Current Number Field:
-Displays the current number the player is trying to make. 
+Displays the current number the player is trying to make due to the numbers they have selected in the grid.  
+
+Highlighted grid: 
+![Grid](https://github.com/rsgc-elder-a/ics4u-isp-Binmatch/blob/master/Binmatch/Highlighted%20Grid.jpg?raw=true)
+
+Here is an example of how the user would interact with the game, they would highlight a row or column making a number that appears. This will cause the grid to randomly generate more numbers where the number was just made. Here we use the example 8 as its one of the answers. The game would get harder by giving the user less turns to make larger numbers thus making the game gradually more difficult 
+
 
 
 
