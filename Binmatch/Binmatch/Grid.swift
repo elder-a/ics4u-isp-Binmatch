@@ -13,9 +13,7 @@ class Grid : SKNode {
     
     var number1 = SKSpriteNode(imageNamed: "Number1")
     var number0 = SKSpriteNode(imageNamed: "Number0")
+    //var rand = arc4random(Int(2))
     
-    
-    
-    
-    
+        
 }
