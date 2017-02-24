@@ -36,6 +36,7 @@ let player2 = SKSpriteNode(imageNamed: "Number0")
 
     
         
+        
         //addChild(player)
         //addChild(player2)
 
