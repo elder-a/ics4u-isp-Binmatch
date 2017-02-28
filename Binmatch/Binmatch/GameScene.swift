@@ -12,7 +12,9 @@ import GameplayKit
 class GameScene: SKScene {
     let player = SKSpriteNode(imageNamed: "Number1")
     let player2 = SKSpriteNode(imageNamed: "Number0")
-    var grid : [[Bool]] = []
+    //let numberOne =  SKSpriteNode(imageNamed: "Number1")
+    //let numberZero =  SKSpriteNode(imageNamed: "Number0")
+    var grid : [[Bool]] = [] //array for that repersents grid
     
     let squareSize = 6 //size of square
     
@@ -21,7 +23,7 @@ class GameScene: SKScene {
         for _ in 1...squareSize {
             var gridRow : [Bool] = []
             for _ in 1...squareSize {
-                var randInt = (Int(arc4random_uniform(2)))
+                let randInt = (Int(arc4random_uniform(2)))
                 if randInt == 0 {
                     gridRow.append(false)
                 } else {
@@ -32,6 +34,45 @@ class GameScene: SKScene {
         }
         
         print(grid)
+        
+        //MARK: USE this sections to print off new field if needed
+        var countX = 0
+        var countY = 0
+        for x in stride(from: 50, through: 400, by: 60){
+            countY = 0
+            // Make sprite objects for various shapes
+            for y in stride(from: 305, through: 605, by: 60) {
+                // Define a square
+                //square.blendMode
+                let numberOne =  SKSpriteNode(imageNamed: "Number1")
+                let numberZero =  SKSpriteNode(imageNamed: "Number0")
+                
+                numberOne.position = CGPoint(x: CGFloat(x),
+                                             y: CGFloat(y)) //sets posistion
+                
+                numberZero.position = CGPoint(x: CGFloat(x),
+                                              y: CGFloat(y)) //sets posistion
+                
+                
+                if countX < 6 && countY < 6{
+                    if grid[countY][countX] == true {
+                        self.addChild(numberOne)
+                        
+                        //grid[countY][countX] = false
+                    } else {
+                        self.addChild(numberZero)
+                    }
+                }
+                countY += 1
+            }
+            countX += 1
+        }
+        //print("\(countX) , \(countY) Counts")
+        
+    }
+    
+    func printOn() {
+        //MARK: USE this sections to print off new field if needed
         var countX = 0
         var countY = 0
         for x in stride(from: 50, through: 400, by: 60){
@@ -61,7 +102,6 @@ class GameScene: SKScene {
             }
             countX += 1
         }
-        print("\(countX) , \(countY) Counts")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -70,24 +110,41 @@ class GameScene: SKScene {
         let touch = touches.first! as UITouch
         // ...
         if player.frame.contains(touch.location(in: player)){
-            print("in object ")
+            //print("in object ")
         }
         
         let intX = Int(touch.location(in: player).x)
         let intY = Int(touch.location(in: player).y)
-        print("(\(intX) , \(intY)) here are the points in int..")
+        //print("(\(intX) , \(intY)) here are the points in int..")
         
         var arrayXY = findSquare(xVal: intX, yVal: intY)
         print(findSquare(xVal: intX, yVal: intY))
         if arrayXY[0] < 6 {
-            newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
+           // newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
+            
+            //The newSquare funciton it reversed and thats why it worked
+            //must do the same for this in or for it to work
+            arrayXY[1] = reverse(val: arrayXY[1]) //corrects the x values
+            
+            if grid[arrayXY[1]][arrayXY[0]] { //should turn to 0
+               grid[arrayXY[1]][arrayXY[0]] = false
+            } else{
+                grid[arrayXY[1]][arrayXY[0]] = true
+            }
+             //print(grid[arrayXY[0]][arrayXY[1]])
         }
+        
+        self.removeAllChildren() //removes all nodes from field
+        
+        print("changed value")
+       
+        printOn()
+        
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
         var countX = 0
         var countY = 5
-        
         
         for y in stride(from: 305, through: 605, by: 60) {
             countX = 0
@@ -100,17 +157,25 @@ class GameScene: SKScene {
                     secondNumber.position = CGPoint(x: CGFloat(x),
                                                     y: CGFloat(y)) //sets posistion
                     
+                    
                     //square.
-                    self.addChild(secondNumber) //should add to screen
-                    print("\(countX) , \(countY) LET INTO Statment")
+                    //self.addChild(secondNumber) //should add to screen
+                    //print("\(countX) , \(countY) LET INTO Statment")
                 }
                 countX += 1
             }
             countY -= 1
         }
-        print("\(countX) , \(countY) Counts")
+       // print("\(countX) , \(countY) Counts")
     }
 }
+
+func reverse(val: Int) -> Int{
+    let nice: [Int] = [5, 4, 3, 2, 1, 0]
+    return nice[val]
+}
+
+
 
 //-make a funciton that figure out what part of the gird its in
 func findSquare(xVal: Int, yVal: Int) -> [Int] {
@@ -135,7 +200,7 @@ func findSquare(xVal: Int, yVal: Int) -> [Int] {
             
             if xVal > xComp && xVal < xCompUp {
                 if yVal > yComp && yVal < yCompUp{
-                    print("Found it")
+                    //print("Found it")
                     xAndY[0] = squareX
                     xAndY[1] = squareY
                     return xAndY
@@ -153,9 +218,6 @@ func findSquare(xVal: Int, yVal: Int) -> [Int] {
     xAndY[1] = 10
     return xAndY
 }
-
-
-
 //-make a funciton that toggles the sprite?
 
 
