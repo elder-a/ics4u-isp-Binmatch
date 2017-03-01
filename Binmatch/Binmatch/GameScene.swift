@@ -18,6 +18,14 @@ class GameScene: SKScene {
     
     let squareSize = 6 //size of square
     
+    var playerScore = 0
+    var currentNumber = 0
+    
+    //goals for the player to get
+    var lowScore = Int(arc4random_uniform(4))
+    var mediumScore = Int(arc4random_uniform(8)+8)
+    var topScore = Int(arc4random_uniform(16)+16)
+    
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
         for _ in 1...squareSize {
@@ -68,6 +76,7 @@ class GameScene: SKScene {
             countX += 1
         }
         //print("\(countX) , \(countY) Counts")
+        setupCurrent()
         
     }
     
@@ -140,6 +149,9 @@ class GameScene: SKScene {
        
         printOn()
         
+        //add other funcitons here for other labels
+        
+        setupCurrent()
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
@@ -168,6 +180,57 @@ class GameScene: SKScene {
         }
        // print("\(countX) , \(countY) Counts")
     }
+    
+    func setupCurrent(){
+        let currentLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+        currentLabel.text = "Current Number"
+        currentLabel.fontColor = SKColor.white
+        currentLabel.fontSize = 20
+        currentLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.18) // Spaced across middle of scene
+        self.addChild(currentLabel)
+        
+        let NumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+        NumberLabel.text = String(currentNumber)
+        NumberLabel.fontColor = SKColor.white
+        NumberLabel.fontSize = 25
+        NumberLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.10) // Spaced across middle of scene
+        self.addChild(NumberLabel)
+        
+        let scoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+        scoreLabel.fontColor = SKColor.white
+        scoreLabel.text = "Score"
+        scoreLabel.fontSize = 20
+        scoreLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.36) // Spaced across middle of scene
+        self.addChild(scoreLabel)
+        
+        let scoreNumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
+        scoreNumberLabel.fontColor = SKColor.white
+        scoreNumberLabel.text = String(playerScore)
+        scoreNumberLabel.fontSize = 25
+        scoreNumberLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.28) // Spaced across middle of scene
+        self.addChild(scoreNumberLabel)
+        
+        
+        
+    }
+    
+    
+    func numberField (){
+
+        
+        
+        
+        
+        
+        
+        
+        
+    }
+    
+    
+    
+    
+    
 }
 
 func reverse(val: Int) -> Int{
