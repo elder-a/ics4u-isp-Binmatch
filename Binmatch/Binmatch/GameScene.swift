@@ -22,9 +22,13 @@ class GameScene: SKScene {
     var currentNumber = 0
     
     //goals for the player to get
-    var lowScore = Int(arc4random_uniform(4))
-    var mediumScore = Int(arc4random_uniform(8)+8)
-    var topScore = Int(arc4random_uniform(16)+16)
+    var lowNum = Int(arc4random_uniform(4))
+    var mediumNum = Int(arc4random_uniform(8)+8)
+    var topNum = Int(arc4random_uniform(16)+16)
+    
+    var lowTurns = 3
+    var mediumTurns = 6
+    var topTurns = 9
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
@@ -77,6 +81,7 @@ class GameScene: SKScene {
         }
         //print("\(countX) , \(countY) Counts")
         setupCurrent()
+        numberField()
         
     }
     
@@ -129,29 +134,30 @@ class GameScene: SKScene {
         var arrayXY = findSquare(xVal: intX, yVal: intY)
         print(findSquare(xVal: intX, yVal: intY))
         if arrayXY[0] < 6 {
-           // newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
+            // newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
             
             //The newSquare funciton it reversed and thats why it worked
             //must do the same for this in or for it to work
             arrayXY[1] = reverse(val: arrayXY[1]) //corrects the x values
             
             if grid[arrayXY[1]][arrayXY[0]] { //should turn to 0
-               grid[arrayXY[1]][arrayXY[0]] = false
+                grid[arrayXY[1]][arrayXY[0]] = false
             } else{
                 grid[arrayXY[1]][arrayXY[0]] = true
             }
-             //print(grid[arrayXY[0]][arrayXY[1]])
+            //print(grid[arrayXY[0]][arrayXY[1]])
         }
         
         self.removeAllChildren() //removes all nodes from field
         
         print("changed value")
-       
+        
         printOn()
         
         //add other funcitons here for other labels
         
         setupCurrent()
+        numberField()
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
@@ -178,7 +184,7 @@ class GameScene: SKScene {
             }
             countY -= 1
         }
-       // print("\(countX) , \(countY) Counts")
+        // print("\(countX) , \(countY) Counts")
     }
     
     func setupCurrent(){
@@ -186,28 +192,28 @@ class GameScene: SKScene {
         currentLabel.text = "Current Number"
         currentLabel.fontColor = SKColor.white
         currentLabel.fontSize = 20
-        currentLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.18) // Spaced across middle of scene
+        currentLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.18) // Spaced across middle of scene
         self.addChild(currentLabel)
         
         let NumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         NumberLabel.text = String(currentNumber)
         NumberLabel.fontColor = SKColor.white
         NumberLabel.fontSize = 25
-        NumberLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.10) // Spaced across middle of scene
+        NumberLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.10) // Spaced across middle of scene
         self.addChild(NumberLabel)
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         scoreLabel.fontColor = SKColor.white
         scoreLabel.text = "Score"
         scoreLabel.fontSize = 20
-        scoreLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.36) // Spaced across middle of scene
+        scoreLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.36) // Spaced across middle of scene
         self.addChild(scoreLabel)
         
         let scoreNumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         scoreNumberLabel.fontColor = SKColor.white
         scoreNumberLabel.text = String(playerScore)
         scoreNumberLabel.fontSize = 25
-        scoreNumberLabel.position = CGPoint(x: size.width*0.75, y: size.height*0.28) // Spaced across middle of scene
+        scoreNumberLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.28) // Spaced across middle of scene
         self.addChild(scoreNumberLabel)
         
         
@@ -216,9 +222,49 @@ class GameScene: SKScene {
     
     
     func numberField (){
-
+        
+        let NumbersTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        NumbersTag.fontColor = SKColor.white
+        NumbersTag.text = "Numbers|"
+        NumbersTag.fontSize = 20
+        NumbersTag.position = CGPoint(x: size.width*0.15, y: size.height*0.36) // Spaced across middle of scene
+        self.addChild(NumbersTag)
+        
+        let TurnsTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        TurnsTag.fontColor = SKColor.white
+        TurnsTag.text = "Turns Left"
+        TurnsTag.fontSize = 20
+        TurnsTag.position = CGPoint(x: size.width*0.40, y: size.height*0.36) // Spaced across middle of scene
+        self.addChild(TurnsTag)
         
         
+        var localNumber = String(lowNum)
+        var localTurns = String(lowTurns)
+        let lowTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        lowTag.fontColor = SKColor.white
+        lowTag.text = "\(localNumber)    |    \(localTurns)"
+        lowTag.fontSize = 20
+        lowTag.position = CGPoint(x: size.width*0.25, y: size.height*0.10) // Spaced across middle of scene
+        self.addChild(lowTag)
+        
+        localNumber = String(mediumNum)
+        localTurns = String(mediumTurns)
+        let mediumTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        mediumTag.fontColor = SKColor.white
+        mediumTag.text = "\(localNumber)    |    \(localTurns)"
+        mediumTag.fontSize = 20
+        mediumTag.position = CGPoint(x: size.width*0.24, y: size.height*0.18) // Spaced across middle of scene
+        self.addChild(mediumTag)
+        
+        
+        localNumber = String(topNum)
+        localTurns = String(topTurns)
+        let highTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        highTag.fontColor = SKColor.white
+        highTag.text = "\(localNumber)   |    \(localTurns)"
+        highTag.fontSize = 20
+        highTag.position = CGPoint(x: size.width*0.25, y: size.height*0.25) // Spaced across middle of scene
+        self.addChild(highTag)
         
         
         
