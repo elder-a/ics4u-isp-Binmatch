@@ -30,6 +30,8 @@ class GameScene: SKScene {
     var mediumTurns = 6
     var topTurns = 9
     
+    var clickedCor : [Int] = [10, 10]  //
+    
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
         for _ in 1...squareSize {
@@ -158,6 +160,8 @@ class GameScene: SKScene {
         
         setupCurrent()
         numberField()
+        
+        numberDecide(xVal: arrayXY[1], yVal: arrayXY[0]) //might need to run this before and other funcitons after
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
@@ -217,7 +221,6 @@ class GameScene: SKScene {
         self.addChild(scoreNumberLabel)
         
         
-        
     }
     
     
@@ -266,25 +269,86 @@ class GameScene: SKScene {
         highTag.position = CGPoint(x: size.width*0.25, y: size.height*0.25) // Spaced across middle of scene
         self.addChild(highTag)
         
-        
-        
-        
-        
-        
     }
     
     
-    
-    
-    
+    func numberDecide (xVal: Int, yVal: Int){
+        //decide what number the user is selecting here and print it to the proper label
+        //euther up down left or right after the first selection
+        //going to have to use a global varible to hold the prevois click location
+        //have one funciton to clear this when rules broken
+        //decide in this funciton weather or not to add to row and print to label
+        
+        //use varible clicked core to store values in
+        var reset = false //resets array if it finds ten
+        for k in clickedCor {
+            if k == 10 {
+                reset = true
+            }
+        }
+        
+        if reset { //if the 10
+            //this is first tap or outside tap
+            clickedCor.removeAll()
+            clickedCor.append(xVal) //adds proper values
+            clickedCor.append(yVal)
+            print("Destory old array here is new one \(clickedCor)")
+        } else {
+            //if any proper point is in a array will launch here
+            clickedCor.append(xVal) //add two more values to array
+            clickedCor.append(yVal)
+            print("Added array it \(clickedCor)")
+            //array starts at bottom left
+            
+            //the second varible is for the x and first is for y (swapped)
+            var corCount = 0
+            var xCompare: [Int] = []
+            var yCompare: [Int] = []
+            for j in clickedCor {
+                if corCount % 2 == 1 { //check evens first
+                    yCompare.append(j)
+                } else {
+                    xCompare.append(j)
+                }
+                corCount += 1
+            }
+            
+            //these are for deciding if the clicks are in the same row or column
+            //the first one should be the same as the rest
+            var previousValX = yCompare[0]
+            for f in yCompare {
+                if previousValX == f{
+                    //these are in the same column 
+                
+                } else {
+                    print("not in the same column") //these are not checkinf correclty
+                    break
+                }
+                previousValX = f
+            }
+            var previousValY = xCompare[0]
+            for f in xCompare {
+                if previousValY == f{
+           
+                    //the values here are in the same row
+                } else {
+                    print("not in the same row") //they could be flipped??
+                    break
+                }
+                previousValY = f
+            }
+            print("X array: \(xCompare)")
+            print("Y array: \(yCompare)")
+        }
+
+    }
+
 }
 
 func reverse(val: Int) -> Int{
     let nice: [Int] = [5, 4, 3, 2, 1, 0]
     return nice[val]
 }
-
-
 
 //-make a funciton that figure out what part of the gird its in
 func findSquare(xVal: Int, yVal: Int) -> [Int] {
