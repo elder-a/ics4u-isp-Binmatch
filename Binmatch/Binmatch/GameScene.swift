@@ -138,6 +138,9 @@ class GameScene: SKScene {
         if arrayXY[0] < 6 {
             // newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
             
+            //this code alternates the 1 & 0s
+            
+            /*
             //The newSquare funciton it reversed and thats why it worked
             //must do the same for this in or for it to work
             arrayXY[1] = reverse(val: arrayXY[1]) //corrects the x values
@@ -147,6 +150,7 @@ class GameScene: SKScene {
             } else{
                 grid[arrayXY[1]][arrayXY[0]] = true
             }
+            */
             //print(grid[arrayXY[0]][arrayXY[1]])
         }
         
@@ -273,21 +277,27 @@ class GameScene: SKScene {
     
     
     func numberDecide (xVal: Int, yVal: Int){
+        //this function tells if its a 10 and splits arrays
+        
         //decide what number the user is selecting here and print it to the proper label
         //euther up down left or right after the first selection
         //going to have to use a global varible to hold the prevois click location
         //have one funciton to clear this when rules broken
         //decide in this funciton weather or not to add to row and print to label
         
+        
         //use varible clicked core to store values in
         var reset = false //resets array if it finds ten
         for k in clickedCor {
-            if k == 10 {
+            if k > 8 {
                 reset = true
             }
         }
+        if xVal == 10 || yVal == 10 { //double check
+            reset = true
+        }
         
-        if reset { //if the 10
+        if reset == true { //if the 10
             //this is first tap or outside tap
             clickedCor.removeAll()
             clickedCor.append(xVal) //adds proper values
@@ -318,8 +328,8 @@ class GameScene: SKScene {
             var previousValX = yCompare[0]
             for f in yCompare {
                 if previousValX == f{
-                    //these are in the same column 
-                
+                    //these are in the same column
+                    
                 } else {
                     print("not in the same column") //these are not checkinf correclty
                     break
@@ -329,7 +339,7 @@ class GameScene: SKScene {
             var previousValY = xCompare[0]
             for f in xCompare {
                 if previousValY == f{
-           
+                    
                     //the values here are in the same row
                 } else {
                     print("not in the same row") //they could be flipped??
@@ -337,12 +347,93 @@ class GameScene: SKScene {
                 }
                 previousValY = f
             }
+            
+            //down to third block here
             print("X array: \(xCompare)")
             print("Y array: \(yCompare)")
+            //second layer of deciding
+            rowAndColumnChecker(xArray: xCompare, yArray: yCompare)
+            
         }
-
+        
     }
-
+    
+    func rowAndColumnChecker(xArray: [Int], yArray: [Int]){
+        //check to see if its row, column or nothing dominant
+        var Column1Row2Neither0 = 0
+        for val in xArray {
+            if val == xArray[0] { //
+                Column1Row2Neither0 = 2
+            } else{
+                Column1Row2Neither0 = 0
+                break // not row dominant
+            }
+        }
+        if Column1Row2Neither0 == 0 { //only call if not row dominant
+            for val in yArray {
+                if val == yArray[0] {
+                    Column1Row2Neither0 = 1
+                } else {
+                    Column1Row2Neither0 = 0
+                    break //not column dominant
+                }
+                
+                
+            }
+        }
+        print("Column1, Row2 or Niether: \(Column1Row2Neither0)")
+        
+        switch Column1Row2Neither0 {
+        case 2:
+            //only go form left to right
+            //this is working
+            let arraySize = yArray.count
+            let startVal =  yArray[0]
+            var rightOrder = false
+            for i in 0...xArray.count-1 {//might be off by one
+                if yArray[i] == startVal-i {
+                   //valid 
+                 rightOrder = true
+                } else {
+                    //invalid
+                    rightOrder = false
+                    break
+                }
+            }
+            print("this row sequnce is \(rightOrder)")
+            
+            
+            
+        case 1:
+            let arraySize = xArray.count
+            let startVal =  xArray[0]
+            var rightOrder = false
+            for i in 0...xArray.count-1 {//might be off by one
+                if xArray[i] == startVal+i {
+                    //valid
+                    rightOrder = true
+                } else {
+                    //invalid
+                    rightOrder = false
+                    break
+                }
+            }
+            print("this row sequnce is \(rightOrder)")
+            
+            
+            
+            
+            
+        default:
+            //here the code goes not further and the player restarts
+            clickedCor.removeAll() //clear array
+        }
+        
+        
+        
+    }
+    
+    
 }
 
 func reverse(val: Int) -> Int{
