@@ -141,16 +141,16 @@ class GameScene: SKScene {
             //this code alternates the 1 & 0s
             
             /*
-            //The newSquare funciton it reversed and thats why it worked
-            //must do the same for this in or for it to work
-            arrayXY[1] = reverse(val: arrayXY[1]) //corrects the x values
-            
-            if grid[arrayXY[1]][arrayXY[0]] { //should turn to 0
-                grid[arrayXY[1]][arrayXY[0]] = false
-            } else{
-                grid[arrayXY[1]][arrayXY[0]] = true
-            }
-            */
+             //The newSquare funciton it reversed and thats why it worked
+             //must do the same for this in or for it to work
+             arrayXY[1] = reverse(val: arrayXY[1]) //corrects the x values
+             
+             if grid[arrayXY[1]][arrayXY[0]] { //should turn to 0
+             grid[arrayXY[1]][arrayXY[0]] = false
+             } else{
+             grid[arrayXY[1]][arrayXY[0]] = true
+             }
+             */
             //print(grid[arrayXY[0]][arrayXY[1]])
         }
         
@@ -162,10 +162,13 @@ class GameScene: SKScene {
         
         //add other funcitons here for other labels
         
-        setupCurrent()
-        numberField()
+        
+        numberField() //might conasider putting this after as well
         
         numberDecide(xVal: arrayXY[1], yVal: arrayXY[0]) //might need to run this before and other funcitons after
+        setupCurrent()
+        
+    
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
@@ -349,8 +352,8 @@ class GameScene: SKScene {
             }
             
             //down to third block here
-            print("X array: \(xCompare)")
-            print("Y array: \(yCompare)")
+            //print("X array: \(xCompare)")
+            //print("Y array: \(yCompare)")
             //second layer of deciding
             rowAndColumnChecker(xArray: xCompare, yArray: yCompare)
             
@@ -390,26 +393,8 @@ class GameScene: SKScene {
             let arraySize = yArray.count
             let startVal =  yArray[0]
             var rightOrder = false
-            for i in 0...xArray.count-1 {//might be off by one
+            for i in 0...yArray.count-1 {//might be off by one
                 if yArray[i] == startVal-i {
-                   //valid 
-                 rightOrder = true
-                } else {
-                    //invalid
-                    rightOrder = false
-                    break
-                }
-            }
-            print("this row sequnce is \(rightOrder)")
-            
-            
-            
-        case 1:
-            let arraySize = xArray.count
-            let startVal =  xArray[0]
-            var rightOrder = false
-            for i in 0...xArray.count-1 {//might be off by one
-                if xArray[i] == startVal+i {
                     //valid
                     rightOrder = true
                 } else {
@@ -420,11 +405,48 @@ class GameScene: SKScene {
             }
             print("this row sequnce is \(rightOrder)")
             
+            //call function here to read array values
+            //firgue out what the right row
+            //and right column are
+            if rightOrder {
+                countScore(xArray: yArray, yArray: reverseArr(val: xArray)) //still seems to be reverse
+                
+                print("X array: \(xArray)")
+                print("Y array: \(yArray)")
+                
+            }
+            
+        case 1:
+            //these needs to be reversed
+            let arraySize = xArray.count
+            let startVal =  xArray[0]
+            var rightOrder = false
+            for i in 0...xArray.count-1 {//might be off by one
+                if xArray[i] == startVal-i {
+                    //valid
+                    rightOrder = true
+                } else {
+                    //invalid
+                    rightOrder = false
+                    break
+                }
+            }
+            print("this column sequnce is \(rightOrder)")
             
             
+            //call function here to read array values
+            if rightOrder {
+                //
+                countScore(xArray: yArray, yArray: reverseArr(val: xArray)) //is printing correclty
+                //the y values are reversed
+                print("X array: \(xArray)")
+                print("Y array: \(reverseArr(val: yArray))")
+                
+            }
             
             
         default:
+            
             //here the code goes not further and the player restarts
             clickedCor.removeAll() //clear array
         }
@@ -433,12 +455,52 @@ class GameScene: SKScene {
         
     }
     
-    
+    func countScore(xArray: [Int], yArray: [Int]){
+        print("New array here: ")
+        var decValue = 0
+        
+        for index in 0...yArray.count-1 {
+            
+            print("Here is the grid value: \(grid[yArray[index]][xArray[index]])") //this is very broken
+            //the yValues seem backwards
+            //could use bit shifting here 
+            if grid[yArray[index]][xArray[index]] {
+                decValue += (1 << index)
+            } else {
+                //nothing here
+            }
+        }
+        
+        currentNumber = decValue //displays in courner
+        print("Here is your decimal Value \(decValue)")
+        
+        if currentNumber == lowNum {
+            playerScore += 10
+            lowNum = Int(arc4random_uniform(4))
+        } else if currentNumber == mediumNum {
+            playerScore += 50
+            mediumNum = Int(arc4random_uniform(8)+8)
+        } else if currentNumber == topNum {
+            playerScore += 100
+            topNum = Int(arc4random_uniform(16)+16)
+        } else {
+            //do nothing
+        }
+    }
 }
 
 func reverse(val: Int) -> Int{
     let nice: [Int] = [5, 4, 3, 2, 1, 0]
     return nice[val]
+}
+
+func reverseArr(val: [Int]) -> [Int]{
+    var finalArr: [Int] = []
+    let nice: [Int] = [5, 4, 3, 2, 1, 0]
+    for value in val {
+        finalArr.append(nice[value])
+    }
+    return finalArr
 }
 
 //-make a funciton that figure out what part of the gird its in
