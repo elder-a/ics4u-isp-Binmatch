@@ -466,14 +466,14 @@ class GameScene: SKScene {
         print("New array here: ")
         var decValue = 0
         
-
-
+        
+        
         
         for index in 0...yArray.count-1 {
             
             print("Here is the grid value: \(grid[yArray[index]][xArray[index]])") //this is very broken
             //the yValues seem backwards
-            //could use bit shifting here 
+            //could use bit shifting here
             if grid[yArray[index]][xArray[index]] {
                 decValue += (1 << index)
             } else {
@@ -489,18 +489,21 @@ class GameScene: SKScene {
             lowNum = Int(arc4random_uniform(4))
             turnSub()
             lowTurns = 3
+            randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
             
         } else if currentNumber == mediumNum {
             playerScore += 50
             mediumNum = Int(arc4random_uniform(8)+8)
             turnSub()
             mediumTurns = 6
+            randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
             
         } else if currentNumber == topNum {
             playerScore += 100
             topNum = Int(arc4random_uniform(16)+16)
             turnSub()
             topTurns = 9 //might need to change this for difficulty
+            randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
             
         } else {
             //do nothing
@@ -510,6 +513,18 @@ class GameScene: SKScene {
         lowTurns += -1
         mediumTurns += -1 //basically just subtrack if turn is used
         topTurns += -1
+    }
+    func randomizeGrid (xArray: [Int], yArray: [Int]){
+        for index in 0...yArray.count-1 {
+            
+            let randomNum = Int(arc4random_uniform(2))
+            if randomNum == 1 {
+                grid[yArray[index]][xArray[index]] = true
+            } else {
+                grid[yArray[index]][xArray[index]] = false
+            }
+            
+        }
     }
 }
 
