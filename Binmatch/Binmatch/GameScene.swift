@@ -168,7 +168,14 @@ class GameScene: SKScene {
         numberDecide(xVal: arrayXY[1], yVal: arrayXY[0]) //might need to run this before and other funcitons after
         setupCurrent()
         
-    
+        
+        if lowTurns < 1 {
+            print("Game over turns ran out") //should send you to another screen
+        } else if mediumTurns < 1{
+            print("Game over turns ran out")
+        } else if topTurns < 1{
+            print("Game over turns ran out")
+        }
     }
     
     func newSquare(xVal: Int, yVal: Int){ //inverts number when clicked on
@@ -459,6 +466,9 @@ class GameScene: SKScene {
         print("New array here: ")
         var decValue = 0
         
+
+
+        
         for index in 0...yArray.count-1 {
             
             print("Here is the grid value: \(grid[yArray[index]][xArray[index]])") //this is very broken
@@ -477,15 +487,29 @@ class GameScene: SKScene {
         if currentNumber == lowNum {
             playerScore += 10
             lowNum = Int(arc4random_uniform(4))
+            turnSub()
+            lowTurns = 3
+            
         } else if currentNumber == mediumNum {
             playerScore += 50
             mediumNum = Int(arc4random_uniform(8)+8)
+            turnSub()
+            mediumTurns = 6
+            
         } else if currentNumber == topNum {
             playerScore += 100
             topNum = Int(arc4random_uniform(16)+16)
+            turnSub()
+            topTurns = 9 //might need to change this for difficulty
+            
         } else {
             //do nothing
         }
+    }
+    func turnSub (){
+        lowTurns += -1
+        mediumTurns += -1 //basically just subtrack if turn is used
+        topTurns += -1
     }
 }
 
