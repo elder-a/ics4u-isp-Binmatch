@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3F4A751E1E8ADC4600D75E5E /* TitleScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F4A751D1E8ADC4600D75E5E /* TitleScene.swift */; };
 		3F69CC981E51F75C00F6E405 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69CC971E51F75C00F6E405 /* AppDelegate.swift */; };
 		3F69CC9E1E51F75C00F6E405 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69CC9D1E51F75C00F6E405 /* GameScene.swift */; };
 		3F69CCA01E51F75C00F6E405 /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F69CC9F1E51F75C00F6E405 /* GameViewController.swift */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3F4A751D1E8ADC4600D75E5E /* TitleScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TitleScene.swift; sourceTree = "<group>"; };
 		3F69CC941E51F75C00F6E405 /* Binmatch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Binmatch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3F69CC971E51F75C00F6E405 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3F69CC9D1E51F75C00F6E405 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 				3F69CC971E51F75C00F6E405 /* AppDelegate.swift */,
 				3F69CC9D1E51F75C00F6E405 /* GameScene.swift */,
 				3F809A5E1E5F687F001CEF41 /* Grid.swift */,
+				3F4A751D1E8ADC4600D75E5E /* TitleScene.swift */,
 				3F69CC9F1E51F75C00F6E405 /* GameViewController.swift */,
 				3F69CCA11E51F75C00F6E405 /* Main.storyboard */,
 				3F69CCA41E51F75C00F6E405 /* Assets.xcassets */,
@@ -170,6 +173,7 @@
 				3FF7C2F31E524AB200ABE238 /* README.md in Sources */,
 				3F69CC981E51F75C00F6E405 /* AppDelegate.swift in Sources */,
 				3F809A5F1E5F687F001CEF41 /* Grid.swift in Sources */,
+				3F4A751E1E8ADC4600D75E5E /* TitleScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
