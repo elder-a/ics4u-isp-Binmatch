@@ -26,20 +26,20 @@ class GameScene: SKScene {
     var mediumNum = Int(arc4random_uniform(8)+8)
     var topNum = Int(arc4random_uniform(16)+16)
     
-    var lowTurns = 3
+    var lowTurns = 3 //these are the amount of turns the player has left to get the number
     var mediumTurns = 6
     var topTurns = 9
     
-    var clickedCor : [Int] = [10, 10]  //
+    var clickedCor : [Int] = [10, 10]  //the base reset to zero is 10
     
-    override func didMove(to view: SKView) {
+    override func didMove(to view: SKView) { //this creates the random bool array which the board is based after
         backgroundColor = SKColor.black
         for _ in 1...squareSize {
             var gridRow : [Bool] = []
             for _ in 1...squareSize {
                 let randInt = (Int(arc4random_uniform(2)))
                 if randInt == 0 {
-                    gridRow.append(false)
+                    gridRow.append(false) //creates true or false from the random int
                 } else {
                     gridRow.append(true)
                 }
@@ -47,7 +47,7 @@ class GameScene: SKScene {
             grid.append(gridRow)
         }
         
-        print(grid)
+        print(grid) //outputs array
         
         //MARK: USE this sections to print off new field if needed
         var countX = 0
@@ -56,9 +56,8 @@ class GameScene: SKScene {
             countY = 0
             // Make sprite objects for various shapes
             for y in stride(from: 305, through: 605, by: 60) {
-                // Define a square
-                //square.blendMode
-                let numberOne =  SKSpriteNode(imageNamed: "Number1")
+
+                let numberOne =  SKSpriteNode(imageNamed: "Number1") //creates sprite with correct image
                 let numberZero =  SKSpriteNode(imageNamed: "Number0")
                 
                 numberOne.position = CGPoint(x: CGFloat(x),
@@ -82,8 +81,8 @@ class GameScene: SKScene {
             countX += 1
         }
         //print("\(countX) , \(countY) Counts")
-        setupCurrent()
-        numberField()
+        setupCurrent() //setup for board
+        numberField() //setup for bottom stuff
         
     }
     
@@ -107,8 +106,8 @@ class GameScene: SKScene {
                                               y: CGFloat(y)) //sets posistion
                 
                 
-                if countX < 6 && countY < 6{
-                    if grid[countY][countX] == true {
+                if countX < 6 && countY < 6{ //this cuts the array to the right side
+                    if grid[countY][countX] == true { //and prints array properly
                         self.addChild(numberOne)
                     } else {
                         self.addChild(numberZero)

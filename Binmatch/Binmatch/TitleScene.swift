@@ -13,6 +13,7 @@ import GameplayKit
 class TitleScene: SKScene {
     
     let play = SKLabelNode(fontNamed: "Helvetica-Bold")
+    let howToPlay = SKLabelNode(fontNamed: "Helvetica-Bold")
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
@@ -44,6 +45,13 @@ class TitleScene: SKScene {
         play.position = CGPoint(x: size.width*0.5, y: size.height*0.5) // Spaced across middle of scene
         self.addChild(play)
         
+        
+        howToPlay.fontColor = SKColor.red
+        howToPlay.text = "How to Play" //put here
+        howToPlay.fontSize = 25
+        howToPlay.position = CGPoint(x: size.width*0.80, y: size.height*0.95) // Spaced across middle of scene
+        self.addChild(howToPlay)
+        
     }
     
     // This allows the scene to respond to a touch
@@ -64,6 +72,20 @@ class TitleScene: SKScene {
             
             // Create the menu scene with the same dimensions as the current scene
             let game = GameScene(size: self.size)
+            
+            // Configure a transition object to specify the type of animation that handles the move between scenes
+            let reveal = SKTransition.doorsCloseHorizontal(withDuration: 1.0)
+            
+            // Access the current view and present the new scene
+            // NOTE: We know the current scene has a view object (since the game is running) so it is safe to force-unwrap the optional view property of the current scene
+            self.view!.presentScene(game, transition: reveal)
+        }
+        
+        if howToPlay.frame.contains(touchLocation) {
+            print("how to play")
+            
+            // Create the menu scene with the same dimensions as the current scene
+            let game = HowToPlay(size: self.size)
             
             // Configure a transition object to specify the type of animation that handles the move between scenes
             let reveal = SKTransition.doorsCloseHorizontal(withDuration: 1.0)

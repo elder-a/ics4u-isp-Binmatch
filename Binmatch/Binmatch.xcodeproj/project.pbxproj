@@ -17,6 +17,7 @@
 		3F69CCB11E51F7D400F6E405 /* Title Screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F69CCB01E51F7D400F6E405 /* Title Screen.jpg */; };
 		3F69CCB31E51F7DC00F6E405 /* Game Screen.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3F69CCB21E51F7DC00F6E405 /* Game Screen.jpg */; };
 		3F809A5F1E5F687F001CEF41 /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F809A5E1E5F687F001CEF41 /* Grid.swift */; };
+		3F8913C91E8D38D80031EEAC /* HowToPlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3F8913C81E8D38D80031EEAC /* HowToPlay.swift */; };
 		3FF7C2F31E524AB200ABE238 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 3FF7C2F21E524AB200ABE238 /* README.md */; };
 		3FF7C2F51E5252D600ABE238 /* Highlighted Grid.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3FF7C2F41E5252D600ABE238 /* Highlighted Grid.jpg */; };
 /* End PBXBuildFile section */
@@ -34,6 +35,7 @@
 		3F69CCB01E51F7D400F6E405 /* Title Screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Title Screen.jpg"; sourceTree = "<group>"; };
 		3F69CCB21E51F7DC00F6E405 /* Game Screen.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Game Screen.jpg"; sourceTree = "<group>"; };
 		3F809A5E1E5F687F001CEF41 /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Grid.swift; sourceTree = "<group>"; };
+		3F8913C81E8D38D80031EEAC /* HowToPlay.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HowToPlay.swift; sourceTree = "<group>"; };
 		3FF7C2F21E524AB200ABE238 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		3FF7C2F41E5252D600ABE238 /* Highlighted Grid.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Highlighted Grid.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,6 +73,7 @@
 			children = (
 				3F69CC971E51F75C00F6E405 /* AppDelegate.swift */,
 				3F69CC9D1E51F75C00F6E405 /* GameScene.swift */,
+				3F8913C81E8D38D80031EEAC /* HowToPlay.swift */,
 				3F809A5E1E5F687F001CEF41 /* Grid.swift */,
 				3F4A751D1E8ADC4600D75E5E /* TitleScene.swift */,
 				3F69CC9F1E51F75C00F6E405 /* GameViewController.swift */,
@@ -125,6 +128,7 @@
 				TargetAttributes = {
 					3F69CC931E51F75C00F6E405 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 3GBLCDM47C;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -174,6 +178,7 @@
 				3F69CC981E51F75C00F6E405 /* AppDelegate.swift in Sources */,
 				3F809A5F1E5F687F001CEF41 /* Grid.swift in Sources */,
 				3F4A751E1E8ADC4600D75E5E /* TitleScene.swift in Sources */,
+				3F8913C91E8D38D80031EEAC /* HowToPlay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +301,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3GBLCDM47C;
 				INFOPLIST_FILE = Binmatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.rsgc.Binmatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,7 +315,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 3GBLCDM47C;
 				INFOPLIST_FILE = Binmatch/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ca.on.rsgc.Binmatch;
 				PRODUCT_NAME = "$(TARGET_NAME)";
