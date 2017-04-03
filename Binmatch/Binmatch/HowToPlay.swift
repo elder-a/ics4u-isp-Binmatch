@@ -13,6 +13,7 @@ import GameplayKit
 class HowToPlay: SKScene {
     
     let back = SKLabelNode(fontNamed: "Helvetica-Bold")
+    let graphic = SKSpriteNode(imageNamed: "instruc")
     //let howToPlay = SKLabelNode(fontNamed: "Helvetica-Bold")
     
     override func didMove(to view: SKView) {
@@ -24,6 +25,15 @@ class HowToPlay: SKScene {
         back.position = CGPoint(x: size.width*0.90, y: size.height*0.95) // Spaced across middle of scene
         self.addChild(back)
         
+        graphic.position = CGPoint(x: size.width*0.24, y: size.height*0.80) // Spaced across middle of scene
+        self.addChild(graphic)
+        
+        let chooseTag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        chooseTag.fontColor = SKColor.green
+        chooseTag.text = "Chosing Numbers:" //put here
+        chooseTag.fontSize = 20
+        chooseTag.position = CGPoint(x: size.width*0.74, y: size.height*0.87) // Spaced across middle of scene
+        self.addChild(chooseTag)
         
         
     }
@@ -40,6 +50,7 @@ class HowToPlay: SKScene {
         
         // Get the location of the first touch
         let touchLocation = touch.location(in: self)
+        
         
         if back.frame.contains(touchLocation) {
             print("back")

@@ -12,16 +12,19 @@ import GameplayKit
 
 class TitleScene: SKScene {
     
-    let play = SKLabelNode(fontNamed: "Helvetica-Bold")
+    //let player = SKSpriteNode(imageNamed: "Number1")
+    //this is a image example name
+    
+    let play = SKSpriteNode(imageNamed: "PlayButton")
     let howToPlay = SKLabelNode(fontNamed: "Helvetica-Bold")
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
         
-        let NumbersTag = SKLabelNode(fontNamed: "Helvetica-Bold")
-        NumbersTag.fontColor = SKColor.blue
-        NumbersTag.text = "BinMatch"
-        NumbersTag.fontSize = 70
+        let NumbersTag = SKSpriteNode(imageNamed: "TitleText")
+        //NumbersTag.fontColor = SKColor.blue
+        //NumbersTag.text = "BinMatch"
+        //NumbersTag.fontSize = 70
         NumbersTag.position = CGPoint(x: size.width*0.5, y: size.height*0.75) // Spaced across middle of scene
         self.addChild(NumbersTag)
         
@@ -39,10 +42,11 @@ class TitleScene: SKScene {
         highScoreNum.position = CGPoint(x: size.width*0.5, y: size.height*0.17) // Spaced across middle of scene
         self.addChild(highScoreNum)
         
-        play.fontColor = SKColor.green
-        play.text = "Play!"
-        play.fontSize = 40
-        play.position = CGPoint(x: size.width*0.5, y: size.height*0.5) // Spaced across middle of scene
+        //play.fontColor = SKColor.green
+        //play.text = "Play!"
+        //play.fontSize = 40
+        
+        play.position = CGPoint(x: size.width*0.56, y: size.height*0.5) // Spaced across middle of scene
         self.addChild(play)
         
         
