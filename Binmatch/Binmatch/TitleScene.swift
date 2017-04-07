@@ -46,7 +46,7 @@ class TitleScene: SKScene {
         //play.text = "Play!"
         //play.fontSize = 40
         
-        play.position = CGPoint(x: size.width*0.56, y: size.height*0.5) // Spaced across middle of scene
+        play.position = CGPoint(x: size.width*0.50, y: size.height*0.45) // Spaced across middle of scene
         self.addChild(play)
         
         

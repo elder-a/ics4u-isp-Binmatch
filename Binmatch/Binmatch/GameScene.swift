@@ -34,6 +34,8 @@ class GameScene: SKScene {
     
     override func didMove(to view: SKView) { //this creates the random bool array which the board is based after
         backgroundColor = SKColor.black
+        
+        
         for _ in 1...squareSize {
             var gridRow : [Bool] = []
             for _ in 1...squareSize {
@@ -223,71 +225,80 @@ class GameScene: SKScene {
     }
     
     func setupCurrent(){
+        
+        
         let currentLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         currentLabel.text = "Current Number"
-        currentLabel.fontColor = SKColor.white
+        currentLabel.fontColor = SKColor.cyan
         currentLabel.fontSize = 20
-        currentLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.18) // Spaced across middle of scene
+        currentLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.22) // Spaced across middle of scene
         self.addChild(currentLabel)
         
         let NumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         NumberLabel.text = String(currentNumber)
-        NumberLabel.fontColor = SKColor.white
+        NumberLabel.fontColor = SKColor.orange
         NumberLabel.fontSize = 25
-        NumberLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.10) // Spaced across middle of scene
+        NumberLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.16) // Spaced across middle of scene
         self.addChild(NumberLabel)
         
         let scoreLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
-        scoreLabel.fontColor = SKColor.white
+        scoreLabel.fontColor = SKColor.cyan
         scoreLabel.text = "Score"
         scoreLabel.fontSize = 20
-        scoreLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.36) // Spaced across middle of scene
+        scoreLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.34) // Spaced across middle of scene
         self.addChild(scoreLabel)
         
         let scoreNumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
-        scoreNumberLabel.fontColor = SKColor.white
+        scoreNumberLabel.fontColor = SKColor.orange
         scoreNumberLabel.text = String(playerScore)
         scoreNumberLabel.fontSize = 25
         scoreNumberLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.28) // Spaced across middle of scene
         self.addChild(scoreNumberLabel)
-        
         
     }
     
     
     func numberField (){
         
+        let gridBehind = SKSpriteNode(imageNamed: "grid back")
+        gridBehind.position = CGPoint(x: size.width*0.28, y: size.height*0.27) // Spaced across middle of scene
+        self.addChild(gridBehind)
+        
         let NumbersTag = SKLabelNode(fontNamed: "Helvetica-Bold")
-        NumbersTag.fontColor = SKColor.white
-        NumbersTag.text = "Numbers|"
-        NumbersTag.fontSize = 20
+        NumbersTag.fontColor = SKColor.black
+        NumbersTag.text = "Numbers"
+        NumbersTag.fontSize = 18
+        
+        NumbersTag.zPosition = 150  // Make sure the label stays on top of everything else!
+        
         NumbersTag.position = CGPoint(x: size.width*0.15, y: size.height*0.36) // Spaced across middle of scene
         self.addChild(NumbersTag)
         
         let TurnsTag = SKLabelNode(fontNamed: "Helvetica-Bold")
-        TurnsTag.fontColor = SKColor.white
+        TurnsTag.fontColor = SKColor.black
         TurnsTag.text = "Turns Left"
-        TurnsTag.fontSize = 20
-        TurnsTag.position = CGPoint(x: size.width*0.40, y: size.height*0.36) // Spaced across middle of scene
-        self.addChild(TurnsTag)
+        TurnsTag.fontSize = 18
+        TurnsTag.zPosition = 150  // Make sure the label stays on top of everything else!
         
+        TurnsTag.position = CGPoint(x: size.width*0.41, y: size.height*0.36) // Spaced across middle of scene
+        self.addChild(TurnsTag)
         
         var localNumber = String(lowNum)
         var localTurns = String(lowTurns)
         let lowTag = SKLabelNode(fontNamed: "Helvetica-Bold")
         lowTag.fontColor = SKColor.white
-        lowTag.text = "\(localNumber)    |    \(localTurns)"
-        lowTag.fontSize = 20
-        lowTag.position = CGPoint(x: size.width*0.25, y: size.height*0.10) // Spaced across middle of scene
+        lowTag.text = "\(localNumber)                   \(localTurns)"
+        lowTag.fontSize = 18
+        lowTag.position = CGPoint(x: size.width*0.25, y: size.height*0.17) // Spaced across middle of scene
         self.addChild(lowTag)
         
         localNumber = String(mediumNum)
         localTurns = String(mediumTurns)
         let mediumTag = SKLabelNode(fontNamed: "Helvetica-Bold")
         mediumTag.fontColor = SKColor.white
-        mediumTag.text = "\(localNumber)    |    \(localTurns)"
-        mediumTag.fontSize = 20
-        mediumTag.position = CGPoint(x: size.width*0.24, y: size.height*0.18) // Spaced across middle of scene
+        mediumTag.text = "\(localNumber)                   \(localTurns)"
+        mediumTag.fontSize = 18
+        mediumTag.position = CGPoint(x: size.width*0.24, y: size.height*0.23) // Spaced across middle of scene
         self.addChild(mediumTag)
         
         
@@ -295,9 +306,9 @@ class GameScene: SKScene {
         localTurns = String(topTurns)
         let highTag = SKLabelNode(fontNamed: "Helvetica-Bold")
         highTag.fontColor = SKColor.white
-        highTag.text = "\(localNumber)   |    \(localTurns)"
-        highTag.fontSize = 20
-        highTag.position = CGPoint(x: size.width*0.25, y: size.height*0.25) // Spaced across middle of scene
+        highTag.text = "\(localNumber)                  \(localTurns)"
+        highTag.fontSize = 18
+        highTag.position = CGPoint(x: size.width*0.25, y: size.height*0.29) // Spaced across middle of scene
         self.addChild(highTag)
         
     }

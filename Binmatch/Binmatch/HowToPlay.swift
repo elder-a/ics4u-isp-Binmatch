@@ -35,6 +35,48 @@ class HowToPlay: SKScene {
         chooseTag.position = CGPoint(x: size.width*0.74, y: size.height*0.87) // Spaced across middle of scene
         self.addChild(chooseTag)
         
+        let S1Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S1Tag.fontColor = SKColor.orange
+        S1Tag.text = "Click one square at a time." //put here
+        S1Tag.fontSize = 20
+        S1Tag.position = CGPoint(x: size.width*0.60, y: size.height*0.80) // Spaced across middle of scene
+        self.addChild(S1Tag)
+        
+        let S2Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S2Tag.fontColor = SKColor.orange
+        S2Tag.text = "All numbers must be in the" //put here
+        S2Tag.fontSize = 20
+        S2Tag.position = CGPoint(x: size.width*0.60, y: size.height*0.75) // Spaced across middle of scene
+        self.addChild(S2Tag)
+        
+        let S3Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S3Tag.fontColor = SKColor.orange
+        S3Tag.text = "same row or column otherwise" //put here
+        S3Tag.fontSize = 20
+        S3Tag.position = CGPoint(x: size.width*0.60, y: size.height*0.70) // Spaced across middle of scene
+        self.addChild(S3Tag)
+        
+        let S4Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S4Tag.fontColor = SKColor.orange
+        S4Tag.text = "no number will show in the current" //put here
+        S4Tag.fontSize = 20
+        S4Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.65) // Spaced across middle of scene
+        self.addChild(S4Tag)
+        
+        let S5Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S5Tag.fontColor = SKColor.orange
+        S5Tag.text = "number field. Get points by making" //put here
+        S5Tag.fontSize = 20
+        S5Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.60) // Spaced across middle of scene
+        self.addChild(S5Tag)
+        
+        let S6Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S6Tag.fontColor = SKColor.orange
+        S6Tag.text = "numbers in binary in the numbers field. " //put here
+        S6Tag.fontSize = 20
+        S6Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.55) // Spaced across middle of scene
+        self.addChild(S6Tag)
+        
         
     }
     
