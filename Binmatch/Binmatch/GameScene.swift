@@ -86,6 +86,12 @@ class GameScene: SKScene {
         setupCurrent() //setup for board
         numberField() //setup for bottom stuff
         
+        
+        
+        
+        
+        
+        
     }
     
     func printOn() {

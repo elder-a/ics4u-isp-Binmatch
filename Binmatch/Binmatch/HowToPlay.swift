@@ -77,6 +77,65 @@ class HowToPlay: SKScene {
         S6Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.55) // Spaced across middle of scene
         self.addChild(S6Tag)
         
+        let S7Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S7Tag.fontColor = SKColor.orange
+        S7Tag.text = "LSB is always on bottom and right. " //put here
+        S7Tag.fontSize = 20
+        S7Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.50) // Spaced across middle of scene
+        self.addChild(S7Tag)
+        
+        let S8Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        S8Tag.fontColor = SKColor.orange
+        S8Tag.text = "MSB is always on top and left. " //put here
+        S8Tag.fontSize = 20
+        S8Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.45) // Spaced across middle of scene
+        self.addChild(S8Tag)
+        
+        
+        
+        let B1Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B1Tag.fontColor = SKColor.green
+        B1Tag.text = "Binary: " //put here
+        B1Tag.fontSize = 20
+        B1Tag.position = CGPoint(x: size.width*0.12, y: size.height*0.35) // Spaced across middle of scene
+        self.addChild(B1Tag)
+        
+        let B2Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B2Tag.fontColor = SKColor.orange
+        B2Tag.text = "Binary is base two. We only use 1&0" //put here
+        B2Tag.fontSize = 20
+        B2Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.30) // Spaced across middle of scene
+        self.addChild(B2Tag)
+        
+        let B3Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B3Tag.fontColor = SKColor.orange
+        B3Tag.text = "to repersent numbers. For example" //put here
+        B3Tag.fontSize = 20
+        B3Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.25) // Spaced across middle of scene
+        self.addChild(B3Tag)
+        
+        let B4Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B4Tag.fontColor = SKColor.orange
+        B4Tag.text = "take 5, in binary this is 101. On the" //put here
+        B4Tag.fontSize = 20
+        B4Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.20) // Spaced across middle of scene
+        self.addChild(B4Tag)
+        
+        let B5Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B5Tag.fontColor = SKColor.orange
+        B5Tag.text = "left is the LSB, and on the right is " //put here
+        B5Tag.fontSize = 20
+        B5Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.15) // Spaced across middle of scene
+        self.addChild(B5Tag)
+        
+        let B6Tag = SKLabelNode(fontNamed: "Helvetica-Bold")
+        B6Tag.fontColor = SKColor.orange
+        B6Tag.text = "is the MSB-most signicant bit." //put here
+        B6Tag.fontSize = 20
+        B6Tag.position = CGPoint(x: size.width*0.50, y: size.height*0.10) // Spaced across middle of scene
+        self.addChild(B6Tag)
+        
+        
         
     }
     
