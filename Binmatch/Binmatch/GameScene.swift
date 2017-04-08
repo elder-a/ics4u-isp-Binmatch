@@ -86,9 +86,10 @@ class GameScene: SKScene {
         setupCurrent() //setup for board
         numberField() //setup for bottom stuff
         
+
         
         
-        
+
         
         
         
@@ -189,6 +190,24 @@ class GameScene: SKScene {
             transisitonS()
             
         }
+        
+        //start testing the score here 
+        
+        let defaults = UserDefaults.standard //start value
+        
+        
+        let token = defaults.string(forKey: "MyKey") //reading value from Title Scene
+        print(token)
+        
+        
+        if (playerScore > Int(token!)!) {
+            defaults.set(playerScore, forKey: "MyKey") //makes equal to player score if larger
+            defaults.synchronize()//wirte value 
+            
+        }
+        
+        
+        
     }
     
     func transisitonS (){

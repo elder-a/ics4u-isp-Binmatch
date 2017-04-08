@@ -15,11 +15,25 @@ class TitleScene: SKScene {
     //let player = SKSpriteNode(imageNamed: "Number1")
     //this is a image example name
     
+
+    
     let play = SKSpriteNode(imageNamed: "PlayButton")
     let howToPlay = SKLabelNode(fontNamed: "Helvetica-Bold")
     
     override func didMove(to view: SKView) {
         backgroundColor = SKColor.black
+        
+        
+        
+        let defaults = UserDefaults.standard
+        let token = defaults.string(forKey: "MyKey") //reading value from Title Scene
+        print(token)
+        
+        if token == nil { //if they open the app for the first time sets highscore to 0
+            defaults.set(0, forKey: "MyKey") //makes equal to player score if larger
+            defaults.synchronize()//wirte value
+        }
+        
         
         let NumbersTag = SKSpriteNode(imageNamed: "TitleText")
         //NumbersTag.fontColor = SKColor.blue
@@ -36,8 +50,8 @@ class TitleScene: SKScene {
         self.addChild(highScore)
         
         let highScoreNum = SKLabelNode(fontNamed: "Helvetica-Bold") //need to put proper varible
-        highScoreNum.fontColor = SKColor.red
-        highScoreNum.text = "0" //put here
+        highScoreNum.fontColor = SKColor.cyan
+        highScoreNum.text = String(token!) //MIGHT NEED TO UNRAP
         highScoreNum.fontSize = 30
         highScoreNum.position = CGPoint(x: size.width*0.5, y: size.height*0.17) // Spaced across middle of scene
         self.addChild(highScoreNum)
