@@ -49,7 +49,7 @@ class GameScene: SKScene {
             grid.append(gridRow)
         }
         
-        print(grid) //outputs array
+       // print(grid) //outputs array
         
         //MARK: USE this sections to print off new field if needed
         var countX = 0
@@ -58,7 +58,7 @@ class GameScene: SKScene {
             countY = 0
             // Make sprite objects for various shapes
             for y in stride(from: 305, through: 605, by: 60) {
-
+                
                 let numberOne =  SKSpriteNode(imageNamed: "Number1") //creates sprite with correct image
                 let numberZero =  SKSpriteNode(imageNamed: "Number0")
                 
@@ -86,10 +86,10 @@ class GameScene: SKScene {
         setupCurrent() //setup for board
         numberField() //setup for bottom stuff
         
-
         
         
-
+        
+        
         
         
         
@@ -128,6 +128,9 @@ class GameScene: SKScene {
         }
     }
     
+    
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         //if player.frame.contains(event.location){
         //print(touches)
@@ -142,7 +145,7 @@ class GameScene: SKScene {
         //print("(\(intX) , \(intY)) here are the points in int..")
         
         var arrayXY = findSquare(xVal: intX, yVal: intY)
-        print(findSquare(xVal: intX, yVal: intY))
+        //print(findSquare(xVal: intX, yVal: intY))
         if arrayXY[0] < 6 {
             // newSquare(xVal: arrayXY[0], yVal: arrayXY[1])
             
@@ -164,7 +167,7 @@ class GameScene: SKScene {
         
         self.removeAllChildren() //removes all nodes from field
         
-        print("changed value")
+        //print("changed value")
         
         printOn()
         
@@ -178,31 +181,31 @@ class GameScene: SKScene {
         
         
         if lowTurns < 1 {
-            print("Game over turns ran out") //should send you to another screen
+            //print("Game over turns ran out") //should send you to another screen
             transisitonS()
             
         } else if mediumTurns < 1{
-            print("Game over turns ran out")
+            //print("Game over turns ran out")
             transisitonS()
             
         } else if topTurns < 1{
-            print("Game over turns ran out")
+            //print("Game over turns ran out")
             transisitonS()
             
         }
         
-        //start testing the score here 
+        //start testing the score here
         
         let defaults = UserDefaults.standard //start value
         
         
         let token = defaults.string(forKey: "MyKey") //reading value from Title Scene
-        print(token)
+        //print(token)
         
         
         if (playerScore > Int(token!)!) {
             defaults.set(playerScore, forKey: "MyKey") //makes equal to player score if larger
-            defaults.synchronize()//wirte value 
+            defaults.synchronize()//wirte value
             
         }
         
@@ -367,12 +370,12 @@ class GameScene: SKScene {
             clickedCor.removeAll()
             clickedCor.append(xVal) //adds proper values
             clickedCor.append(yVal)
-            print("Destory old array here is new one \(clickedCor)")
+            //print("Destory old array here is new one \(clickedCor)")
         } else {
             //if any proper point is in a array will launch here
             clickedCor.append(xVal) //add two more values to array
             clickedCor.append(yVal)
-            print("Added array it \(clickedCor)")
+            //print("Added array it \(clickedCor)")
             //array starts at bottom left
             
             //the second varible is for the x and first is for y (swapped)
@@ -396,7 +399,7 @@ class GameScene: SKScene {
                     //these are in the same column
                     
                 } else {
-                    print("not in the same column") //these are not checkinf correclty
+                    //print("not in the same column") //these are not checkinf correclty
                     break
                 }
                 previousValX = f
@@ -407,7 +410,7 @@ class GameScene: SKScene {
                     
                     //the values here are in the same row
                 } else {
-                    print("not in the same row") //they could be flipped??
+                    //print("not in the same row") //they could be flipped??
                     break
                 }
                 previousValY = f
@@ -446,7 +449,7 @@ class GameScene: SKScene {
                 
             }
         }
-        print("Column1, Row2 or Niether: \(Column1Row2Neither0)")
+        //print("Column1, Row2 or Niether: \(Column1Row2Neither0)")
         
         switch Column1Row2Neither0 {
         case 2:
@@ -465,7 +468,7 @@ class GameScene: SKScene {
                     break
                 }
             }
-            print("this row sequnce is \(rightOrder)")
+            //print("this row sequnce is \(rightOrder)")
             
             //call function here to read array values
             //firgue out what the right row
@@ -473,9 +476,11 @@ class GameScene: SKScene {
             if rightOrder {
                 countScore(xArray: yArray, yArray: reverseArr(val: xArray)) //still seems to be reverse
                 
-                print("X array: \(xArray)")
-                print("Y array: \(yArray)")
+                //print("X array: \(xArray)")
+                //print("Y array: \(yArray)")
+                //put here
                 
+                printBehind(xArray: yArray, yArray: reverseArr(val: xArray)) //should work if
             }
             
         case 1:
@@ -493,7 +498,7 @@ class GameScene: SKScene {
                     break
                 }
             }
-            print("this column sequnce is \(rightOrder)")
+            //print("this column sequnce is \(rightOrder)")
             
             
             //call function here to read array values
@@ -501,8 +506,10 @@ class GameScene: SKScene {
                 //
                 countScore(xArray: yArray, yArray: reverseArr(val: xArray)) //is printing correclty
                 //the y values are reversed
-                print("X array: \(xArray)")
-                print("Y array: \(reverseArr(val: yArray))")
+                //print("X array: \(xArray)")
+                //print("Y array: \(reverseArr(val: yArray))")
+                
+                printBehind(xArray: yArray, yArray: reverseArr(val: xArray)) //could be backwads
                 
             }
             
@@ -518,7 +525,7 @@ class GameScene: SKScene {
     }
     
     func countScore(xArray: [Int], yArray: [Int]){
-        print("New array here: ")
+        //print("New array here: ")
         var decValue = 0
         
         
@@ -526,7 +533,7 @@ class GameScene: SKScene {
         
         for index in 0...yArray.count-1 {
             
-            print("Here is the grid value: \(grid[yArray[index]][xArray[index]])") //this is very broken
+            //print("Here is the grid value: \(grid[yArray[index]][xArray[index]])") //this is very broken
             //the yValues seem backwards
             //could use bit shifting here
             if grid[yArray[index]][xArray[index]] {
@@ -537,7 +544,7 @@ class GameScene: SKScene {
         }
         
         currentNumber = decValue //displays in courner
-        print("Here is your decimal Value \(decValue)")
+        //print("Here is your decimal Value \(decValue)")
         
         if currentNumber == lowNum {
             playerScore += 10
@@ -545,6 +552,9 @@ class GameScene: SKScene {
             turnSub()
             lowTurns = 3
             randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
+            //these are if all turns go through
+            //Mark: TurnEnd
+            
             
         } else if currentNumber == mediumNum {
             playerScore += 50
@@ -553,12 +563,19 @@ class GameScene: SKScene {
             mediumTurns = 6
             randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
             
+            
+            
+            
+            
         } else if currentNumber == topNum {
             playerScore += 100
             topNum = Int(arc4random_uniform(16)+16)
             turnSub()
             topTurns = 9 //might need to change this for difficulty
             randomizeGrid(xArray: xArray, yArray: yArray) //could be backwards ???
+            
+            
+            
             
         } else {
             //do nothing
@@ -581,7 +598,61 @@ class GameScene: SKScene {
             
         }
     }
-}
+    
+    
+    func printBehind(xArray: [Int], yArray: [Int]) {
+        //MARK: USE this sections to print off new field if needed
+        print("New back: ")
+        print("xArray: \(xArray) : yArray: \(yArray)")
+        //something is backwards
+        var countX = 0
+        var countY = 0
+        //for yV in yArray {
+        //var yV = 0
+        var countxV = 0
+            for xV in xArray { //this is not looping properly ?????
+               
+            
+                 countX = 0
+                 countY = 0
+                
+                for x in stride(from: 50, through: 400, by: 60){
+                    countY = 0
+                    
+                    // Make sprite objects for various shapes
+                    for y in stride(from: 305, through: 605, by: 60) {
+                        
+              
+                        // Define a square
+                        //square.blendMode
+                        let backSplash =  SKSpriteNode(imageNamed: "back box")
+                        //let numberZero =  SKSpriteNode(imageNamed: "Number0")
+                        
+                        backSplash.position = CGPoint(x: CGFloat(x-12), //might want to move a bit to the side
+                            y: CGFloat(y)) //sets posistion
+                        backSplash.zPosition = -1 //sourece of problems???
+                        
+                        if countX < 6 && countY < 6{
+                            
+                            print(yArray[countxV])
+                            
+                            if countX == xV && countY == yArray[countxV] { //might need to mess around with this a bit
+                               
+                                addChild(backSplash)
+                                
+                            } else {
+                                
+                            }
+                        }
+                        countY += 1
+                    }
+                    countX += 1
+                }
+                countxV += 1
+            }
+        }
+    }
+
 
 func reverse(val: Int) -> Int{
     let nice: [Int] = [5, 4, 3, 2, 1, 0]
