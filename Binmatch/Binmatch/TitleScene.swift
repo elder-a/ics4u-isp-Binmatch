@@ -5,6 +5,7 @@
 //  Created by Andy-E on 2017-03-28.
 //  Copyright © 2017 Andy-E. All rights reserved.
 //
+// Opening Scene allows player to jump in or learn
 
 import SpriteKit
 import GameplayKit

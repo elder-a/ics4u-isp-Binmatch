@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     
     
-        let defaults = UserDefaults.standard
+        let defaults = UserDefaults.standard //allows for us to save values when app is closed
         let defaultValue = ["MyKey" : ""]
         defaults.register(defaults: defaultValue)
     

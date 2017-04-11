@@ -5,6 +5,7 @@
 //  Created by Andy-E on 2017-03-30.
 //  Copyright © 2017 Andy-E. All rights reserved.
 //
+// Just a page that shows rthe user how to play with graphics and explanaitons
 
 import SpriteKit
 import GameplayKit
