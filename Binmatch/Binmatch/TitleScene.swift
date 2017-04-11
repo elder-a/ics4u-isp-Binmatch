@@ -27,12 +27,14 @@ class TitleScene: SKScene {
         
         
         let defaults = UserDefaults.standard
-        let token = defaults.string(forKey: "MyKey") //reading value from Title Scene
+        var token = defaults.string(forKey: "MyKey") //reading value from Title Scene
         print(token)
         
         if token == nil { //if they open the app for the first time sets highscore to 0
             defaults.set(0, forKey: "MyKey") //makes equal to player score if larger
             defaults.synchronize()//wirte value
+            token = defaults.string(forKey: "MyKey")
+            
         }
         
         
