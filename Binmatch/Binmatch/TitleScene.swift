@@ -39,10 +39,7 @@ class TitleScene: SKScene {
         
         
         let NumbersTag = SKSpriteNode(imageNamed: "TitleText")
-        //NumbersTag.fontColor = SKColor.blue
-        //NumbersTag.text = "BinMatch"
-        //NumbersTag.fontSize = 70
-        NumbersTag.position = CGPoint(x: size.width*0.5, y: size.height*0.75) // Spaced across middle of scene
+        NumbersTag.position = CGPoint(x: size.width*0.5, y: size.height*0.75) // These are just label 
         self.addChild(NumbersTag)
         
         let highScore = SKLabelNode(fontNamed: "Helvetica-Bold")
@@ -59,9 +56,6 @@ class TitleScene: SKScene {
         highScoreNum.position = CGPoint(x: size.width*0.5, y: size.height*0.17) // Spaced across middle of scene
         self.addChild(highScoreNum)
         
-        //play.fontColor = SKColor.green
-        //play.text = "Play!"
-        //play.fontSize = 40
         
         play.position = CGPoint(x: size.width*0.50, y: size.height*0.45) // Spaced across middle of scene
         self.addChild(play)

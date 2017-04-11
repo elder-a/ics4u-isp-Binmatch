@@ -260,7 +260,7 @@ class GameScene: SKScene {
         currentLabel.text = "Current Number"
         currentLabel.fontColor = SKColor.cyan
         currentLabel.fontSize = 20
-        currentLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.22) // Spaced across middle of scene
+        currentLabel.position = CGPoint(x: size.width*0.78, y: size.height*0.22) // these are just label for the program 
         self.addChild(currentLabel)
         
         let NumberLabel = SKLabelNode(fontNamed: "Helvetica-Bold")

@@ -23,7 +23,7 @@ class HowToPlay: SKScene {
         back.fontColor = SKColor.red
         back.text = "Back" //put here
         back.fontSize = 25
-        back.position = CGPoint(x: size.width*0.90, y: size.height*0.95) // Spaced across middle of scene
+        back.position = CGPoint(x: size.width*0.90, y: size.height*0.95) // These are all just full of infor
         self.addChild(back)
         
         graphic.position = CGPoint(x: size.width*0.24, y: size.height*0.80) // Spaced across middle of scene
