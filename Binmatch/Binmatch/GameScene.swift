@@ -5,6 +5,7 @@
 //  Created by Andy-E on 2017-02-13.
 //  Copyright © 2017 Andy-E. All rights reserved.
 //
+//  This  Scene is for the main game and feature the grid and score panel
 
 import SpriteKit
 import GameplayKit
@@ -18,11 +19,11 @@ class GameScene: SKScene {
     
     let squareSize = 6 //size of square
     
-    var playerScore = 0
+    var playerScore = 0 //these start at zero
     var currentNumber = 0
     
     //goals for the player to get
-    var lowNum = Int(arc4random_uniform(4))
+    var lowNum = Int(arc4random_uniform(4))  //gives random values to formed numbers
     var mediumNum = Int(arc4random_uniform(8)+8)
     var topNum = Int(arc4random_uniform(16)+16)
     
@@ -254,7 +255,7 @@ class GameScene: SKScene {
     
     func setupCurrent(){
         
-        
+        //setup for bottom right of screen
         let currentLabel = SKLabelNode(fontNamed: "Helvetica-Bold")
         currentLabel.text = "Current Number"
         currentLabel.fontColor = SKColor.cyan
@@ -288,6 +289,7 @@ class GameScene: SKScene {
     
     func numberField (){
         
+        //setup for bottom left of screen
         let gridBehind = SKSpriteNode(imageNamed: "grid back")
         gridBehind.position = CGPoint(x: size.width*0.28, y: size.height*0.27) // Spaced across middle of scene
         self.addChild(gridBehind)
